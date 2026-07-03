@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffe4ec" />
+  <title>Happy Birthday Betuuu 💖</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background music (removed - no file present) -->
+
+  <!-- Video audio track for Gift 2 -->
+  <audio id="video-audio" preload="auto">
+    <source src="assets/Soniyo (Lyrics) - Sonu Nigam, Shreya Ghoshal, Raju Singh,.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Mute / unmute floating button -->
+  <button id="music-btn" class="music-btn" aria-label="Mute music">
+    <svg id="music-icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 9H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4l5 4V5L9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg id="music-icon-off" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="display:none">
+      <path d="M9 9H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4l5 4V5L9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M17 17L21 21M21 17L17 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+  </div>
+  <div class="hearts-bg" aria-hidden="true"></div>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Landing -->
+  <section id="landing" class="screen active">
+    <div class="landing-inner">
+      <p class="landing-hearts">❤️ Happiest Birthday My Love ❤️</p>
+      <h1 class="landing-name">Betuuu</h1>
+      <p class="landing-from">From <span>Baby</span></p>
+      <button id="start-btn" class="btn btn-primary">
+        <span>Open your surprise</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Gift boxes -->
+  <section id="gifts" class="screen">
+    <header class="gifts-header">
+      <p class="label">Your surprises await</p>
+      <h2>Open your gifts</h2>
+      <p class="hint" id="gift-hint">Tap Gift 1 to begin</p>
+    </header>
+
+    <div class="gift-row">
+      <button class="gift-box" data-gift="1" aria-label="Open gift 1">
+        <div class="gift-box-inner">
+          <div class="box-lid"><span class="ribbon">🎀</span></div>
+          <div class="box-body"><span>1</span></div>
+        </div>
+        <p class="gift-label">Gift 1</p>
+      </button>
+
+      <button class="gift-box locked" data-gift="2" aria-label="Open gift 2" disabled>
+        <div class="gift-box-inner">
+          <div class="box-lid"><span class="ribbon">🎀</span></div>
+          <div class="box-body"><span>2</span></div>
+        </div>
+        <p class="gift-label">Gift 2</p>
+      </button>
+
+      <button class="gift-box locked" data-gift="3" aria-label="Open gift 3" disabled>
+        <div class="gift-box-inner">
+          <div class="box-lid"><span class="ribbon">🎀</span></div>
+          <div class="box-body"><span>3</span></div>
+        </div>
+        <p class="gift-label">Gift 3</p>
+      </button>
+    </div>
+
+    <p class="progress" id="progress-text" style="display:none">0 of 3 opened</p>
+  </section>
+
+  <!-- Gift 1 -->
+  <section id="gift-1" class="screen gift-screen gift-split-screen">
+    <div class="split-layout">
+      <div class="split-image-side">
+        <div class="split-img-wrap">
+          <img src="assets/photo1.jpg" alt="Our memory at Jand Hanuman" />
+        </div>
+      </div>
+      <div class="split-text-side">
+        <div class="split-card glass-card">
+          <span class="gift-badge">Gift 1</span>
+          <p class="message-line">Your birthday, Jand Hanuman, the rain, and us. 🌧️❤️</p>
+          <p class="message-line secondary">One of the happiest and most unforgettable days of our lives.<br />A memory we'll cherish forever. 🤍</p>
+        </div>
+        <button class="btn btn-primary next-btn" data-next="gifts" data-complete="1">
+          <span>Next</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift 2 -->
+  <section id="gift-2" class="screen gift-screen gift-split-screen">
+    <div class="split-layout">
+      <div class="split-image-side">
+        <div class="split-img-wrap split-video-wrap">
+          <video id="birthday-video" playsinline preload="metadata">
+            <source src="assets/Video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div class="split-text-side">
+        <div class="split-card glass-card">
+          <span class="gift-badge">Gift 2</span>
+          <p class="message-line">A little flower behind your ear, endless smiles, and beautiful memories. 🌸🤍</p>
+          <p class="message-line secondary">Every little moment with you means the world to me.</p>
+        </div>
+        <button class="btn btn-primary next-btn" data-next="gifts" data-complete="2">
+          <span>Next</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift 3 -->
+  <section id="gift-3" class="screen gift-screen gift-split-screen">
+    <div class="split-layout">
+      <div class="split-image-side">
+        <div class="split-img-wrap">
+          <img src="assets/photo2.jpg" alt="Another beautiful memory" />
+        </div>
+      </div>
+      <div class="split-text-side">
+        <div class="split-card glass-card">
+          <span class="gift-badge">Gift 3</span>
+          <p class="message-line">A rainy drive, your favorite Jurassic Park movie, your favorite roses, and our favorite pizza. 🌧️🎬🌹🍕</p>
+          <p class="message-line secondary">A perfect birthday, made even more special because it was with you. ❤️</p>
+        </div>
+        <button class="btn btn-primary next-btn" data-next="letter" data-complete="3">
+          <span>Next</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cake card -->
+  <section id="cake" class="screen cake-screen">
+    <div class="cake-wrap">
+      <div class="cake-card glass-panel">
+        <p class="cake-title">Your Birthday Cake 🎂</p>
+        <div class="css-cake" aria-hidden="true">
+          <div class="candle candle-1"><div class="flame"></div></div>
+          <div class="candle candle-2"><div class="flame"></div></div>
+          <div class="candle candle-3"><div class="flame"></div></div>
+          <div class="cake-top"><span class="cake-heart">❤️</span></div>
+          <div class="cake-middle"></div>
+          <div class="cake-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+        <div class="cake-messages">
+          <p class="cake-msg-main">I will always love you,<br />no matter what. 🤍</p>
+          <p class="cake-msg-sub">You are the best part of my every day.</p>
+          <div class="cake-hearts-row">
+            <span>💗</span><span>💖</span><span>💕</span><span>💗</span><span>💖</span>
+          </div>
+          <p class="cake-msg-sub">Every moment with you is a gift.</p>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="cake-next-btn">
+        <span>Open your gifts</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Final letter -->
+  <section id="letter" class="screen">
+    <div class="letter-wrap">
+      <div class="letter-card glass-panel">
+        <div class="letter-seal">💌</div>
+        <p class="label">For my Betuuu</p>
+        <h2 class="letter-title">Always &amp; Forever</h2>
+        <div class="letter-body">
+          <p>Happy Birthday My betu !! ❤️❤️</p>
+          <p>
+            Saturdays have always been lucky for us, and today your birthday is on a Saturday again.
+            It reminds me of all our beautiful memories together.
+          </p>
+          <p>
+            I pray that you always stay happy, healthy, and blessed. May all your dreams come true,
+            may you achieve great success, and become everything you wish to be.
+          </p>
+          <p>
+            Thank you for loving me and making my life so beautiful. You are my favorite person,
+            my safe place, and my biggest happiness. I promise I will always do my best to make you smile,
+            support you, stand by your side, and keep you happy. No matter what happens, I'll always be there for you.
+          </p>
+          <p>
+            I hope we celebrate many more birthdays together. I love you more than words can say.
+          </p>
+          <p class="signature">Happy Birthday, My love 🧿💋🥳✨<br /><strong>Baby</strong> ❤️</p>
+        </div>
+      </div>
+      <button id="replay-btn" class="btn btn-ghost">Relive the surprise</button>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
